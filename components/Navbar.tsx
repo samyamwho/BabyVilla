@@ -5,12 +5,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: '/#home' },
-  { label: 'About Us', href: '/#about' },
-  { label: 'Events', href: '/#events' },
-  { label: 'Facilities', href: '/#facilities' },
-  { label: 'Find Us', href: '/#find-us' },
+  { label: 'Home', targetId: 'home' },
+  { label: 'About Us', targetId: 'about' },
+  { label: 'Facilities', targetId: 'facilities' },
+  { label: 'Events', targetId: 'events' },
+  { label: 'Find Us', targetId: 'find-us' },
 ];
+
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +26,19 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+    const handleNavClick = (targetId: string) => {
+    if (location.pathname === '/') {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate('/', { state: { scrollTo: targetId } });
+    }
+    setIsOpen(false);
+  };
+
 
   return (
     <nav
@@ -41,32 +55,22 @@ const Navbar: React.FC = () => {
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
           {NAV_ITEMS.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
-              onClick={(e) => {
-                 // If on homepage, prevent default and smooth scroll manually
-                 if (location.pathname === '/') {
-                     e.preventDefault();
-                     const hash = item.href.split('#')[1];
-                     const element = document.getElementById(hash);
-                     if(element) element.scrollIntoView({ behavior: 'smooth' });
-                 }
-                 // If not on homepage, let the <a> tag do its job (navigate to /#id)
-              }}
-              className="text-black hover:text-primary font-normal transition-colors font-sans text-lg tracking-wide cursor-pointer"
+              onClick={() => handleNavClick(item.targetId)}
+              className="text-gray-700 hover:text-primary font-medium transition-colors font-sans text-lg tracking-wide cursor-pointer bg-transparent border-none"
             >
               {item.label}
-            </a>
+            </button>
           ))}
           <div className="flex gap-4">
              <Link to="/contact">
-                 <button className="px-6 py-3 rounded-full border-2 border-primary text-primary font-semibold text-lg hover:bg-primary hover:text-white transition-all">
+                 <button className="px-6 py-3 rounded-full border-2 border-primary text-primary font-medium text-lg hover:bg-primary hover:text-white transition-all">
                     Contact Us
                  </button>
              </Link>
              <Link to="/apply">
-                 <button className="px-6 py-3 rounded-full bg-primary text-white font-semibold text-lg shadow-lg hover:bg-green-800 hover:scale-105 transition-all">
+                 <button className="px-6 py-3 rounded-full bg-primary text-white font-medium text-lg shadow-lg hover:bg-green-800 hover:scale-105 transition-all">
                     Apply to Program
                  </button>
              </Link>
@@ -89,24 +93,15 @@ const Navbar: React.FC = () => {
           isOpen ? 'max-h-[35rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="flex flex-col p-8 space-y-6">
+           <div className="flex flex-col p-8 space-y-6">
           {NAV_ITEMS.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
-              className="text-xl font-bold text-gray-700 hover:text-primary border-b border-gray-100 pb-3"
-              onClick={(e) => {
-                  if (location.pathname === '/') {
-                     e.preventDefault();
-                     const hash = item.href.split('#')[1];
-                     const element = document.getElementById(hash);
-                     if(element) element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                  setIsOpen(false);
-              }}
+              onClick={() => handleNavClick(item.targetId)}
+              className="text-xl font-bold text-gray-700 hover:text-primary border-b border-gray-100 pb-3 text-left"
             >
               {item.label}
-            </a>
+            </button>
           ))}
           <div className="flex flex-col gap-4 mt-6">
              <Link to="/contact" onClick={() => setIsOpen(false)}>

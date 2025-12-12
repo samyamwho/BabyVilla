@@ -3,7 +3,7 @@ import { FacilityCardProps } from '../types';
 import { Blocks, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import preschool from '../assets/preschool.png';
-import primary from '../assets/primary.png';
+import primary from '../assets/primaryschool.png';
 
 const FacilityCard: React.FC<FacilityCardProps> = ({ id, title, description, imageSrc, colorClass, icon }) => (
   <div className={`group relative overflow-hidden rounded-3xl bg-white shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl`}>

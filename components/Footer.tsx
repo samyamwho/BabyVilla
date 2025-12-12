@@ -1,7 +1,7 @@
 import React from 'react';
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/logowhite.png';
+import Logo from '../assets/logowhite.png';
 
 const Footer: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1 space-y-4">
             <div className="flex items-center gap-2">
                <div className=" p-2 rounded-full">
-                 <img src={logo} alt="Logo" className="w-36 h-24" />
+                 <img src={Logo} alt="Logo" className="w-36 h-24" />
                </div>
             </div>
             <p className="text-gray-100 text-lg mt-4">
@@ -32,13 +32,13 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+         {/* Quick Links */}
           <div>
             <h4 className="font-serif text-lg font-bold mb-4 text-white">Quick Links</h4>
-            <ul className="space-y-2 text-gray-100 text-md">
+            <ul className="space-y-2 text-gray-300 text-sm">
               <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li><a href="/#about" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="/#facilities" className="hover:text-white transition-colors">Facilities</a></li>
+              <li><Link to="/" state={{ scrollTo: 'about' }} className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link to="/" state={{ scrollTo: 'facilities' }} className="hover:text-white transition-colors">Facilities</Link></li>
               <li><Link to="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
               <li><Link to="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
@@ -47,11 +47,11 @@ const Footer: React.FC = () => {
           {/* Programs */}
           <div>
             <h4 className="font-serif text-lg font-bold mb-4 text-white">Programs</h4>
-            <ul className="space-y-2 text-gray-100 text-md">
-              <li><a href="#" className="hover:text-white transition-colors">Playgroup</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Nursery</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Kindergarten</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Primary (1-6)</a></li>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li><Link to="/" state={{ scrollTo: 'facilities' }} className="hover:text-white transition-colors">Playgroup</Link></li>
+              <li><Link to="/" state={{ scrollTo: 'facilities' }} className="hover:text-white transition-colors">Nursery</Link></li>
+              <li><Link to="/" state={{ scrollTo: 'facilities' }} className="hover:text-white transition-colors">Kindergarten</Link></li>
+              <li><Link to="/" state={{ scrollTo: 'facilities' }} className="hover:text-white transition-colors">Primary (1-6)</Link></li>
             </ul>
           </div>
 

@@ -1,11 +1,13 @@
+
 import React from 'react';
 
 export interface NavItem {
   label: string;
-  href: string;
+  targetId: string;
 }
 
 export interface FacilityCardProps {
+  id: string; // Added for routing
   title: string;
   description: string;
   imageSrc: string;
