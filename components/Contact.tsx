@@ -2,6 +2,7 @@ import React from 'react';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+
 const Contact: React.FC = () => {
   return (
     <section id="find-us" className="py-20 bg-gray-50">

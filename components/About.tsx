@@ -1,5 +1,6 @@
 import React from 'react';
 import { Leaf, Heart, Lightbulb } from 'lucide-react';
+import hero2 from '../assets/images/hero2.jpg';
 
 const About: React.FC = () => {
   return (
@@ -44,7 +45,7 @@ const About: React.FC = () => {
             </div>
             <div className="space-y-4">
                 <img 
-                  src="./assets/images/hero2.jpg" 
+                  src= {hero2}
                   alt="Child Playing" 
                   className="rounded-2xl shadow-lg w-full h-72 object-cover"
                 />

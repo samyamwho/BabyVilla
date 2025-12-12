@@ -2,6 +2,8 @@ import React from 'react';
 import { FacilityCardProps } from '../types';
 import { Blocks, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import preschool from '../assets/preschool.png';
+import primary from '../assets/primary.png';
 
 const FacilityCard: React.FC<FacilityCardProps> = ({ id, title, description, imageSrc, colorClass, icon }) => (
   <div className={`group relative overflow-hidden rounded-3xl bg-white shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl`}>
@@ -53,7 +55,7 @@ const Facilities: React.FC = () => {
             id="pre-school"
             title="Pre-School"
             description="Growing learning ability & improving skills in your kids. A colorful world of toys, games, and foundational Montessori activities."
-            imageSrc="./assets/preschool.png"
+            imageSrc={preschool}
             colorClass="bg-[#2e7d32]" // Primary Green
             icon={<Blocks size={32} />}
           />
@@ -61,7 +63,7 @@ const Facilities: React.FC = () => {
             id="primary-school"
             title="Primary School"
             description="Upto Grade 6. Focused on academic excellence, critical thinking, and social development through comprehensive curriculum."
-            imageSrc="./assets/primaryschool.png"
+            imageSrc={primary}
             colorClass="bg-[#2e7d32]" // Secondary Yellow/Orange
             icon={<BookOpen size={32} />}
           />
